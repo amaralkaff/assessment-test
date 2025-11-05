@@ -1,0 +1,58 @@
+# Laravel
+/laravel/vendor/
+/laravel/node_modules/
+/laravel/.env
+/laravel/storage/*.key
+/laravel/storage/app/*
+!/laravel/storage/app/.gitignore
+/laravel/storage/framework/cache/*
+!/laravel/storage/framework/cache/.gitignore
+/laravel/storage/framework/sessions/*
+!/laravel/storage/framework/sessions/.gitignore
+/laravel/storage/framework/testing/*
+!/laravel/storage/framework/testing/.gitignore
+/laravel/storage/framework/views/*
+!/laravel/storage/framework/views/.gitignore
+/laravel/storage/logs/*
+!/laravel/storage/logs/.gitignore
+/laravel/bootstrap/cache/*
+!/laravel/bootstrap/cache/.gitignore
+/laravel/database/*.sqlite
+/laravel/database/*.sqlite-journal
+/laravel/public/hot
+/laravel/public/storage
+/laravel/.phpunit.result.cache
+/laravel/Homestead.json
+/laravel/Homestead.yaml
+/laravel/auth.json
+/laravel/npm-debug.log
+/laravel/yarn-error.log
+
+# Next.js
+/nextjs/.next/
+/nextjs/out/
+/nextjs/build/
+/nextjs/node_modules/
+/nextjs/.env*.local
+/nextjs/.env
+/nextjs/.vercel
+/nextjs/*.log
+/nextjs/.DS_Store
+/nextjs/.pnp
+/nextjs/.pnp.js
+/nextjs/.yarn/install-state.gz
+
+# Docker
+docker-compose.override.yml
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db

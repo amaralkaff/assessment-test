@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Laravel Backend
+  laravel:
+    build:
+      context: ./laravel
+      dockerfile: Dockerfile
+    container_name: assessment-laravel
+    working_dir: /var/www
+    volumes:
+      - ./laravel:/var/www
+      - laravel-vendor:/var/www/vendor
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=sqlite
+      - DB_DATABASE=/var/www/database/database.sqlite
+    networks:
+      - assessment-network
+    command: php artisan serve --host=0.0.0.0 --port=8000
+
+  # Next.js Frontend
+  nextjs:
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile
+    container_name: assessment-nextjs
+    working_dir: /app
+    volumes:
+      - ./nextjs:/app
+      - nextjs-node-modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    networks:
+      - assessment-network
+    command: npm run dev
+    depends_on:
+      - laravel
+
+volumes:
+  laravel-vendor:
+  nextjs-node-modules:
+
+networks:
+  assessment-network:
+    driver: bridge
