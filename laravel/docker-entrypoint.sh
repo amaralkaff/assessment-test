@@ -18,7 +18,7 @@ if ! grep -q "APP_KEY=base64:" /var/www/.env; then
     php artisan key:generate --force
 fi
 
-if ! grep -q "JWT_SECRET=" /var/www/.env; then
+if ! grep -q "JWT_SECRET=.\+" /var/www/.env || [ -z "$(grep JWT_SECRET /var/www/.env | cut -d'=' -f2)" ]; then
     php artisan jwt:secret --force
 fi
 
