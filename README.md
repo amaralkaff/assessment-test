@@ -35,6 +35,7 @@ cp .env.example .env
 # Configure database in .env
 php artisan key:generate
 php artisan migrate
+php artisan db:seed  # Optional: seed demo data
 php artisan serve
 ```
 
@@ -86,6 +87,7 @@ docker-compose logs -f   # View logs
 ```bash
 php artisan serve    # Start server
 php artisan migrate  # Run migrations
+php artisan db:seed  # Seed demo data
 ```
 
 **Frontend**
@@ -93,3 +95,21 @@ php artisan migrate  # Run migrations
 npm run dev    # Development
 npm run build  # Production build
 ```
+
+## Demo Data
+
+The database seeder creates a demo user and sample posts for testing.
+
+**Demo Credentials:**
+- Email: `test@example.com`
+- Password: `password`
+
+Run the seeder:
+```bash
+cd laravel
+php artisan db:seed
+```
+
+This creates:
+- 1 demo user
+- 5 sample blog posts

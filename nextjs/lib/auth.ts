@@ -72,5 +72,6 @@ export async function logoutFromLaravel(laravelToken: string) {
       },
     });
   } catch (error) {
+    console.error('Logout error:', error);
   }
 }
