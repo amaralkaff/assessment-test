@@ -32,10 +32,10 @@ export default function PostsPage() {
       const response = await apiClient.get<any>(`/posts?page=${page}`);
       setPosts(response.data);
       setPagination({
-        current_page: response.current_page,
-        last_page: response.last_page,
-        per_page: response.per_page,
-        total: response.total,
+        current_page: response.meta.current_page,
+        last_page: response.meta.last_page,
+        per_page: response.meta.per_page,
+        total: response.meta.total,
       });
     } catch (error) {
     } finally {
