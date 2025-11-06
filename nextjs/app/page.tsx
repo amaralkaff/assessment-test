@@ -1,26 +1,13 @@
-'use client';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/lib/AuthContext';
+export default async function Home() {
+  const cookieStore = await cookies();
+  const sessionUser = cookieStore.get('session_user')?.value;
 
-export default function Home() {
-  const router = useRouter();
-  const { user, loading } = useAuth();
-
-  useEffect(() => {
-    if (!loading) {
-      if (user) {
-        router.push('/posts');
-      } else {
-        router.push('/login');
-      }
-    }
-  }, [user, loading, router]);
-
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <span className="loading loading-spinner loading-lg"></span>
-    </div>
-  );
+  if (sessionUser) {
+    redirect('/posts');
+  } else {
+    redirect('/login');
+  }
 }
