@@ -1,9 +1,10 @@
-FROM node:20-alpine
+FROM oven/bun:1-alpine
 
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
+COPY bun.lockb* ./
 
 # Copy application code (node_modules excluded via .dockerignore)
 COPY . .
@@ -15,5 +16,5 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 EXPOSE 3000
 
 # Dependencies will be installed at runtime via entrypoint
-# This makes builds much faster, especially on Windows
+# Bun is 10-100x faster than npm, especially on Windows
 ENTRYPOINT ["docker-entrypoint.sh"]

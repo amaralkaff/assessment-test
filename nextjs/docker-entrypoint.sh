@@ -2,15 +2,15 @@
 
 set -e
 
-echo "Starting Next.js application"
+echo "Starting Next.js application with Bun"
 
 sleep 2
 
 if [ ! -d "node_modules" ] || [ -z "$(ls -A node_modules)" ]; then
-    echo "📦 Installing dependencies..."
-    npm install
+    echo "📦 Installing dependencies with Bun (super fast!)..."
+    bun install
 fi
 
 echo "Next.js application is ready"
 
-exec npm run dev
+exec bun run dev
